@@ -43,5 +43,26 @@ def del_classes(request):
     return redirect('/classes.html')
 
 
+def edit_classes(request):
+
+    if request.method == "GET":
+        nid = request.GET.get('nid')
+
+        obj = Classes.objects.filter(id=nid).first()
+
+        return render(request,"edit_classes.html",{"obj":obj})
+
+
+    elif request.method == "POST":
+
+        nid = request.GET.get('nid')
+        title = request.POST.get('xxoo')
+
+        Classes.objects.filter(id=nid).update(title=title)
+
+        return redirect('/classes.html')
+
+
+
 
 

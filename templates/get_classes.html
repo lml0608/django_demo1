@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>classes</h2>
+<div>
+    <a href="/add_classes.html">添加</a>
+</div>
+<div>
+{#    <ul>#}
+{#        {% for cls in cls_list %}#}
+{##}
+{#            <li>{{ cls.title }}</li>#}
+{##}
+{#            {% empty %}#}
+{##}
+{#            <li>没有学生</li>#}
+{##}
+{#        {% endfor %}#}
+{#    </ul>#}
+    <table border="1">
+        <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th colspan="2">操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            {% for cls in cls_list %}
+                <tr>
+                    <td>{{ cls.id }}</td>
+                    <td>{{ cls.title }}</td>
+                    <td><a href="/del_classes.html?nid={{ cls.id }}">删除</a></td>
+                    <td><a href="/del_classes.html?nid={{ cls.id }}">编辑</a></td>
+
+                </tr>
+
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

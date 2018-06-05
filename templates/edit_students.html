@@ -11,9 +11,18 @@
 
     <p><input type="text" name="username" value="{{ obj.username }}"></p>
     <p><input type="text" name="age" value="{{ obj.age }}"></p>
+
     <p>
-        男：<input type="radio" name="gender" value="1">
+        {% if obj.gender %}
+        男：<input type="radio" name="gender" value="1" checked="checked">
         女：<input type="radio" name="gender" value="0">
+
+        {% else%}
+
+            男：<input type="radio" name="gender" value="1" >
+        女：<input type="radio" name="gender" value="0" checked="checked">
+
+        {% endif %}
     </p>
     <p><select name="cs">
 

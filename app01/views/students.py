@@ -59,7 +59,9 @@ def edit_students(request):
 
         obj = Student.objects.filter(id=sid).first()
 
-        return render(request,"edit_students.html",{"obj":obj})
+        cls_list = Classes.objects.values('id','title')
+
+        return render(request,"edit_students.html",{"obj":obj,"cls_list":cls_list})
 
 
     elif request.method == "POST":

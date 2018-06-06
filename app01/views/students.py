@@ -59,14 +59,32 @@ def edit_students(request):
 
         obj = Student.objects.filter(id=sid).first()
 
-        return render(request,"edit_students.html",{"obj":obj})
+        cls_list = Classes.objects.values('id','title')
 
+        # print(cls_list)
+
+        # for row in cls_list:
+        #
+        #     print(row)
+        #
+        #     print(row['id'])
+
+        return render(request,"edit_students.html",{"obj":obj,"cls_list":cls_list})
 
     elif request.method == "POST":
 
-        nid = request.GET.get('sid')
-        title = request.POST.get('xxoo')
+        sid = request.GET.get('sid')
 
-        Classes.objects.filter(id=nid).update(title=title)
+        print(sid)
 
-        return redirect('/classes.html')
+        u = request.POST.get('username')
+
+        a = request.POST.get('age')
+
+        g = request.POST.get('gender')
+
+        class_id = request.POST.get('class_id')
+
+        Student.objects.filter(id=sid).update(username=u, age=a, gender=g, cs_id=class_id)
+
+        return redirect('/students.html')
